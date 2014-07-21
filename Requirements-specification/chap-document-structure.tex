@@ -29,3 +29,12 @@ referring to it.
 A chunk can be referred to or included in several other chunks.  This
 way, different structures can be imposed on the text for different
 purposes, for instance a web site or a printed document. 
+
+To allow for parameters for chunks, we imagine a particular
+\emph{binding chunk} that binds a symbol S to a particular chunk C, so
+that references or inclusions in the subordinated chunk D containing
+the symbol S would resolve to C.  This mechanism would replace the use
+of macros for simple text inclusion.  As an example, consider the
+macro named ``IfYouWantClass'' in the CLIM II specification.  It is
+just a piece of text with three parameters. 
+
