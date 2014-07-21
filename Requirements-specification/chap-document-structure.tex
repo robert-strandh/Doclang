@@ -16,3 +16,16 @@ We think that any chunk could be \emph{labeled}.  A label could for
 instance be a \cl{} symbol so that we can take advantage of the
 package system for labeling chunks.
 
+Chunks can be \emph{included} in other chunks using a special
+\emph{include} chunk which takes the label of some other chunk.
+The meaning of inclusion is that the included chunk should appear as
+if its associated text had occurred instead.  
+
+Chunks can also be \emph{referred to} by other chunks using a
+\emph{reference} chunk.  The meaning is that the chunk being referred
+to should appear as a hyperlink, a page reference, etc. in the chunk
+referring to it. 
+
+A chunk can be referred to or included in several other chunks.  This
+way, different structures can be imposed on the text for different
+purposes, for instance a web site or a printed document. 
