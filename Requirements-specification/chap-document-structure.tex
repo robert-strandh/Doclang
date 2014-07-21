@@ -1,0 +1,18 @@
+\chapter{Document structure}
+\label{chap-document-structure}
+
+In order to encourage reuse and factoring of text elements, we think
+it might be a good idea to avoid fixed structuring elements such as
+parts, chapters, sections, etc.  Instead, we think that text should be
+structured into \emph{chunks}.%
+\footnote{The name \emph{chunk} is preliminary, of course.}
+A chunk might be a word, a phrase, a sentence, a paragraph, a math
+formula, a table, etc.  Furthermore, a single structuring chunk
+(called, say, \emph{sequence}) would contain a list of inferior
+chunks.  There would be some restrictions on what type of chunk can be
+contained in what other chunk, of course.  
+
+We think that any chunk could be \emph{labeled}.  A label could for
+instance be a \cl{} symbol so that we can take advantage of the
+package system for labeling chunks.
+
