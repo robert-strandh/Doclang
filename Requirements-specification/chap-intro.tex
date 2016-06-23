@@ -3,8 +3,23 @@
 \pagenumbering{arabic}%
 \label{chap-introduction}%
 
-\sysname is a documentation and typesetting system.  It is \emph{not}
-a system for extracting documentation strings from Common Lisp source
-code and turn it into HTML or some other format.  Instead, it is an
-attempt to design a system that can replace TeX/LaTeX, DocBook,
-Texinfo, and similar systems.
+\sysname{} is a system for structuring documents, and in particular
+software documentation.  Here is what \sysname{} is \emph{not}:
+
+\begin{itemize}
+\item It is not a system for \emph{extracting documentation strings}
+  from Common Lisp source code and turn it into HTML or some other
+  format.
+\item It is also not another system defined in terms of the
+  \emph{input syntax} that it accepts, as is the case for existing
+  markup systems.
+\item Finally, it is not an interactive system defined in terms of the
+  \emph{gestures} that the user is allowed to emit.
+\end{itemize}
+
+Instead, it is a system that is defined in terms of a set of \clos{}
+\emph{protocols}%
+\footnote{A \clos{} protocol consists of a set of \emph{protocol
+    classes} and a set of \emph{generic functions} operating on
+  instances of those classes.}
+defined on a data structure kept in main memory.
