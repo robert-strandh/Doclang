@@ -15,4 +15,22 @@ This class is the base class of all bibliography entries.
 \Defclass {book}
 
 This class is the base class for all book entries.  It can also be
-instantiated when a general book entry is needed.
+instantiated when a general book entry is needed.  This class is a
+subclass of the class \texttt{bibliography-entry}.
+
+\Definitarg {:title}
+
+The value of this initarg is a \texttt{chunk} describing the title of
+the book.  This initarg is mandatory.
+
+\Definitarg {:authors}
+
+The value of this initarg is a list of \texttt{chunk}s, each
+describing one author of the book.  This initarg is mandatory.
+
+\Definitarg {:publisher}
+
+\Definitarg {:publishing-date}
+
+The value of this initarg is a \texttt{date}.  This initarg is
+optional.
