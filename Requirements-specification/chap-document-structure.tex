@@ -13,8 +13,10 @@ chunks.  There would be some restrictions on what type of chunk can be
 contained in what other chunk, of course.  
 
 We think that any chunk could be \emph{labeled}.  A label could for
-instance be a \commonlisp{} symbol so that we can take advantage of the
-package system for labeling chunks.
+instance be a \commonlisp{} string.  Using strings rather than (say)
+symbols avoids any problems with packages that may not exist, and the
+system for presenting the document could show references to labels in
+an obvious way.
 
 Chunks can be \emph{included} in other chunks using a special
 \emph{include} chunk which takes the label of some other chunk.
