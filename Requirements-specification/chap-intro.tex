@@ -3,6 +3,48 @@
 \pagenumbering{arabic}%
 \label{chap-introduction}%
 
+Systems for writing documents roughly fall into two categories.  In
+the first category, we find so called \emph{markup} systems.  Such
+systems are specified in terms of the \emph{syntax} of the input
+language.  Typical systems in this category are TeX, Texinfo, etc.  In
+the second category, we find systems that allow the user to produce
+documents \emph{interactively}.  These systems are specified in terms
+of the \emph{gestures} that the user can emit in different situations.
+Typical systems in this category are Word and LibreOffice.
+
+Systems in both these categories specify only input and output.  Both
+types of system generate output in some form that the user can view
+using standard tools, such as PDF or HTML.  In addition, interactive
+tools typically use an external format that makes it possible to save
+and restore a document across editing sessions.
+
+Unfortunately, users have very specific taste, both when it comes to
+input syntax and available gestures.  For that reason, we think it is
+worth thinking about a system for manipulating documents in a
+different way.
+
+The main observation is that systems in both categories are
+\emph{closed} in that they do not allow the user to provide different
+ways of manipulating the document in the internal form that the system
+uses internally.  The reason is probably that these systems are
+written in static languages, and so can not be easily customized to
+process a document in a way different from what the initial author of
+the system intended.
+
+The purpose of this project is to create a library that defines a set
+of classes and generic functions that allow some client code to create
+and manipulate a document.  Contrary to the types of systems cited
+above, the specification of this system is thus in terms of what kind
+of objects it manipulates, and what functions exist to manipulate
+them.
+
+A library like this can then be used both by an application that reads
+some markup syntax and produces the document in the form of a graph of
+class instances, and by an interactive application that allows the
+user to create the document by issuing gestures.  In fact, it will be
+possible to create several different application with different
+markups and with a different set of possible gestures.
+
 \sysname{} is a system for structuring documents, and in particular
 software documentation.  Here is what \sysname{} is \emph{not}:
 
