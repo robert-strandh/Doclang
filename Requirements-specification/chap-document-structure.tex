@@ -33,12 +33,14 @@ way, different structures can be imposed on the text for different
 purposes, for instance a web site or a printed document. 
 
 To allow for parameters for chunks, we imagine a particular
-\emph{binding chunk} that binds a symbol S to a particular chunk C, so
-that references or inclusions in the subordinated chunk D containing
-the symbol S would resolve to C.  This mechanism would replace the use
-of macros for simple text inclusion.  As an example, consider the
-macro named ``IfYouWantClass'' in the CLIM II specification.  It is
-just a piece of text with three parameters. 
+\emph{binding chunk} that binds a variable%
+\footnote{The exact nature of variables has not been determined yet} V
+to a particular chunk C, so that references or inclusions in the
+subordinated chunk D containing the variable V would resolve to C.
+This mechanism would replace the use of macros for simple text
+inclusion.  As an example, consider the macro named ``IfYouWantClass''
+in the CLIM II specification.  It is just a piece of text with three
+parameters.
 
 Just as chunks can be labeled, it should be possible to give any chunk
 a \emph{title} by wrapping it in a particular \emph{title} chunk.
