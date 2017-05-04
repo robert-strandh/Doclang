@@ -43,10 +43,17 @@ some markup syntax and produces the document in the form of a graph of
 class instances, and by an interactive application that allows the
 user to create the document by issuing gestures.  In fact, it will be
 possible to create several different application with different
-markups and with a different set of possible gestures.
+markups and with a different set of possible gestures.  In order to
+save documents across sessions in a \unix{}-like operating system, we
+propose an external file format specified as a sequence of bytes.
+This external format is a trivial mapping from the internal structure,
+and a similar internal structure can be created by using the
+\commonlisp{} function \texttt{read} to read the contents of a
+file in this format.
 
-\sysname{} is a system for structuring documents, and in particular
-software documentation.  Here is what \sysname{} is \emph{not}:
+\sysname{} is thus a system for structuring documents, and in
+particular software documentation.  Here is what \sysname{} is
+\emph{not}:
 
 \begin{itemize}
 \item It is not a system for \emph{extracting documentation strings}
