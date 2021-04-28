@@ -4,19 +4,19 @@
 In order to encourage reuse and factoring of text elements, we think
 it might be a good idea to avoid fixed structuring elements such as
 parts, chapters, sections, etc.  Instead, we think that text should be
-structured into \emph{chunks}.%
-\footnote{The name \emph{chunk} is preliminary, of course.}
-A chunk might be a word, a phrase, a sentence, a paragraph, a math
-formula, a table, etc.  Furthermore, a single structuring chunk
-(called, say, \emph{sequence}) would contain a list of inferior
-chunks.  There would be some restrictions on what type of chunk can be
-contained in what other chunk, of course.  
+structured into \emph{chunks}.  A chunk might be a word, a phrase, a
+sentence, a paragraph, a math formula, a table, etc.  Furthermore, a
+single structuring chunk (called, say, \emph{sequence}) would contain
+a list of inferior chunks.  There would be some restrictions on what
+type of chunk can be contained in what other chunk, of course.
 
-We think that any chunk could be \emph{labeled}.  A label could for
-instance be a \commonlisp{} string.  Using strings rather than (say)
-symbols avoids any problems with packages that may not exist, and the
-system for presenting the document could show references to labels in
-an obvious way.
+We think that any chunk could be \emph{labeled}.  We think a label
+should be a positive integer, usually a fixnum, decided by the author
+of the chunk, using the following code:
+
+\begin{verbatim}
+(logior (ash (get-universal-time) 16) (random (ash 1 16)))
+\end{verbatim}
 
 Chunks can be \emph{included} in other chunks using a special
 \emph{include} chunk which takes the label of some other chunk.
@@ -52,3 +52,45 @@ order to make it easier for authors to include existing elements in
 new documents, \sysname{} maintains a \emph{database} of labeled
 elements.  This database is a mapping from labels in the form of
 \commonlisp{} strings to elements.
+
+However, it must be possible for this database to grow incrementally.
+For that reason, we allow for an ordinary string to occur, whenever a
+\texttt{word} or \texttt{punctuation} chunk is required.
+
+\Defclass {chunk}
+
+This is the base class of all chunks.
+
+\Definitarg {:label}
+
+\Defgeneric {label} {(chunk)}
+
+\Defclass {sequence}
+
+This class is a subclass of the class \texttt{chunk}.
+
+\Definitarg {:children}
+
+\Defgeneric {children} {(sequence)}
+
+\Defclass {morpheme}
+
+This class is the lowest level class for representing meaningful
+sequences of characters.  Instances of this class are used as
+constituents of instances of the \texttt{word} class.
+
+While it may seem excessive to have a class for this level of detail,
+it can be useful in many situations:
+
+\begin{itemize}
+\item It is easy to think that words in English are separated by
+  spaces, this is not always the case.  Some words are made up of
+  several morphemes separated by space, such as ``sponge cake''
+\item In languages such as Vietnamese, morphemes that make up a word
+  are always separated by spaces, and the information on which
+  morphemes go together is crucial for understanding the meaning of a
+  phrase.
+\item One might want to search for morphemes rather than for entire
+  words, to avoid having to account for verb conjugations or plural
+  endings.
+\end{itemize}
