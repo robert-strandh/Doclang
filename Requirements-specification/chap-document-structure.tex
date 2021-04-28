@@ -63,7 +63,17 @@ This is the base class of all chunks.
 
 \Definitarg {:label}
 
+This initarg is used to supply the label for the chunk.  The value of
+the argument should be a positive fixnum generated like this:
+
+\begin{verbatim}
+(logior (ash (get-universal-time) 16) (random (ash 1 16)))
+\end{verbatim}
+
 \Defgeneric {label} {(chunk)}
+
+This generic function returns the label of the chunk as supplied to
+the \texttt{:label} initarg. 
 
 \Defclass {sequence}
 
@@ -71,7 +81,13 @@ This class is a subclass of the class \texttt{chunk}.
 
 \Definitarg {:children}
 
+This initarg is used to supply the children of the chunk.  The value
+of the argument should be a list of chunks.
+
 \Defgeneric {children} {(sequence)}
+
+This generic function returns the list of children of the chunk, as
+supplied to the \texttt{:children} initarg.
 
 \Defclass {morpheme}
 
@@ -94,3 +110,13 @@ it can be useful in many situations:
   words, to avoid having to account for verb conjugations or plural
   endings.
 \end{itemize}
+
+\Definitarg {:rendering}
+
+This initarg determines how the morpheme is to be rendered.  The value
+of the argument is a string.
+
+\Defgeneric {rendering} {(morpheme)}
+
+This generic function returns the rendering of the morpheme as the
+string supplied to the \texttt{:rendering} initarg.
