@@ -57,7 +57,7 @@ However, it must be possible for this database to grow incrementally.
 For that reason, we allow for an ordinary string to occur, whenever a
 \texttt{word} or \texttt{punctuation} chunk is required.
 
-\Defclass {chunk}
+\Defprotoclass {chunk}
 
 This is the base class of all chunks.
 
@@ -120,3 +120,86 @@ of the argument is a string.
 
 This generic function returns the rendering of the morpheme as the
 string supplied to the \texttt{:rendering} initarg.
+
+\Defclass {word}
+
+This class is a subclass of \texttt{chunk}.  It is used to represent a
+single word.
+
+\Definitarg {:morphemes}
+
+This initarg is used to supply a list of morphemes making up the
+word.
+
+\Definitarg {:connections}
+
+This initarg determines how the different morphemes are connected.
+The value is a list of \commonlisp{} keywords chosen from the
+following set:
+
+\begin{itemize}
+\item \texttt{:none}.  Meaning that the morphemes are juxtaposed.
+\item \texttt{:space}.  Meaning that the morphemes should be separated
+  by a space.
+\item \texttt{:hyphen}.  Meaning that the morphemes should be
+  separated by a hyphen.
+\end{itemize}
+
+This list of connections should have a length that is one less than
+the list of morphemes.
+
+\Definitarg {:category}
+
+This initarg is an instance of (a subclass of) the class
+\texttt{category}, defined below.
+
+\Defgeneric {morphemes} {(word)}
+
+\Defgeneric {connections} {(word)}
+
+\Defgeneric {category} {(word)}
+
+\Defprotoclass {category}
+
+\Defclass {noun}
+
+\Defclass {common-noun}
+
+\Defclass {proper-noun}
+
+\Defclass {verb}
+
+\Defclass {adjective}
+
+\Defclass {pronoun}
+
+\Defclass {preposition}
+
+\Defclass {conjunction}
+
+\Defclass {interjection}
+
+\Defclass {numeral}
+
+\Defclass {article}
+
+\Defclass {determiner}
+
+\Defclass {punctuation}
+
+\Defclass {phrase}
+
+This class is a subclass of the class \texttt{sequence}.  The children
+of an instance of this class are instances of \texttt{word} and
+\texttt{punctuation}.
+
+\Defclass {sentence}
+
+This class is a subclass of the class \texttt{sequence}.  The children
+of an instance of this class are instances of \texttt{phrase}.
+
+\Defclass {paragraph}
+
+This class is a subclass of the class \texttt{sequence}.  The children
+of an instance of this class are instances of \texttt{sentence}.
+
