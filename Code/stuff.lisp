@@ -42,5 +42,3 @@
 
 (defclass reference-chunk (indirect-chunk)
   ())
-
-
