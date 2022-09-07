@@ -260,13 +260,14 @@ V1
    [doclang:paragraph
    :children
    (
-    "Finally, it is not an interactive system defined in terms of the"
+    "Finally" "," "it" "is" "not" "an" "interactive" "system"
+    "defined" "in" "terms" "of" "the"
     [doclang:emphasize
     :children
     (
      "gestures"
      )]
-    "that the user is allowed to emit" "."
+    "that" "the" "user" "is" "allowed" "to" "emit" "."
     )]
    )]
   [doclang:paragraph
