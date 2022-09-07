@@ -1,44 +1,49 @@
 (cl:in-package #:doclang)
 
-(defclass chunk ()
+(defclass unique-id-mixin ()
   ((%unique-id :initform nil :initarg :unique-id :reader unique-id)))
 
+(defclass chunk (unique-id-mixin)
+  ((%contents :initarg :contents :accessor contents)))
+
 (define-save-info chunk
-  ((:unique-id unique-id)))
-  
+ ((:unique-id unique-id)
+  (:contents contents)))
 
-(defclass word-component-chunk (chunk)
-  ((%characters :initarg :characters :reader characters)))
+(defclass compound-object ()
+  ((%children :initarg :children :accessor children)))
 
-(define-save-info word-component-chunk
- ((:characters characters)))
+(define-save-info compound-object
+ ((:children children)))
 
-(defclass compound-chunk (chunk)
-  ((%children :initarg :children :reader children)))
-
-(define-save-info compound-chunk
-  ((:children children)))
-
-(defclass word-chunk (compound-chunk)
+(defclass sentence (compound-object)
   ())
 
-(defclass phrase-chunk (compound-chunk)
+(defclass paragraph (compound-object)
   ())
 
-(defclass sentence-chunk (compound-chunk)
+(defclass itemize (compound-object)
   ())
 
-(defclass paragraph-chunk (compound-chunk)
+(defclass section (compound-object)
+  ((%title :initarg :title :accessor title)))
+
+(define-save-info section
+  ((:title title)))
+
+(defclass document (compound-object)
+  ((%title :initarg :title :accessor title)
+   (%author :initarg :author :accessor author)))
+
+(define-save-info document
+  ((:title title)
+   (:author author)))
+
+(defclass emphasize (compound-object)
   ())
 
-(defclass indirect-chunk (chunk)
-  ((%indirect-id :initarg :indirect-id :reader indirect-id)))
-
-(define-save-info indirect-chunk
-  ((:indirect-id indirect-id)))
-
-(defclass inline-chunk (indirect-chunk)
+(defclass chunk-inline (unique-id-mixin)
   ())
 
-(defclass reference-chunk (indirect-chunk)
+(defclass chunk-reference (unique-id-mixin)
   ())
