@@ -1,14 +1,308 @@
 V1
-([doc:word-component-chunk
- :unique-id 250933051337447
- :characters "generic"]
- [doc:word-component-chunk
- :unique-id 250933051463396
- :characters "function"]
- [doc:word-chunk
- :unique-id 250933055319897
+[doclang:document
+:author "Robert Strandh"
+:title
+[doclang:paragraph
+:children
+([doclang:sentence
  :children
- ([doc:inline-chunk
-  :indirect-id 250933051337447]
-  [doc:inline-chunk
-  :indirect-id 250933051463396])])
+ ("Doclang")]
+ [doclang:sentence
+ :children
+ ("A" "documentation" "system")]
+ [doclang:sentence
+ :children
+ ("Requirements" "specification")])]
+:children 
+([doclang:section
+ :title
+ [doclang:sentence
+ :children
+ ("Introduction")]
+ :children
+ ([doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "Systems" "for" "writing" "documents" "roughly"
+    "fall" "into" "two" "categories" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "In" "the" "first" "category" ","
+    "we" "find" "so" "called"
+    [doclang:emphasize
+    :children ("markup")]
+    "systems" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Such" "systems" "are" "specified" "in"
+    "terms" "of" "the"
+    [doclang:emphasize
+    :children ("syntax")]
+    "of" "the" "input" "language" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Typical" "systems" "in" "this" "category" "are"
+    "TeX" "," "Texinfo" "," "etc" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "In" "the" "second" "category" ","
+    "we" "find" "systems"
+    "that" "allow" "the" "user" "to" "produce" "documents"
+    [doclang:emphasize
+    :children ("interactively")]
+    "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "These" "systems" "are" "specified" "in" "terms" "of"
+    "the"
+    [doclang:emphasize
+    :children ("gestures")]
+    "that" "the" "user" "can" "emit" "in" "different" "situations" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Typical" "systems" "in" "this" "category"
+    "are" "Word" "and" "LibreOffice" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+     "Systems" "in" "both" "these" "categories" "specify"
+     "only" "input" "and" "output" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Both" "types" "of" "system" "generate" "output" "in" "some" 
+    "form" "that" "the" "user" "can" "view" "using" "standard" "tools"
+    ","
+    "such" "as" "PDF" "or" "HTML" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "In" "addition" "," "interactive" "tools" "typically" "use"
+    "an" "external" "format" "that" "makes" "it" "possible"
+    "to" "save" "and" "restore" "a" "document" "across"
+    "editing" "sessions" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "Unfortunately" "," "users" "have" "very" "specific" "taste"
+    "," "both" "when" "it" "comes" "to" "input" "syntax" "and"
+    "available" "gestures" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "For" "that" "reason" "," "we" "believe" "it" "is" "worth"
+    "thinking" "about" "a" "system" "for" "manipulating"
+    "documents" "in" "a" "different" "way" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "The" "main" "observation" "is" "that" "systems"
+    "in" "both" "categories" "are"
+    [doclang:emphasize
+    :children ("closed")]
+    "in" "that" "they" "do" "not" "allow" "the" "user"
+    "to" "provide" "different" "ways" "of" "manipulating"
+    "the" "document" "in" "the" "form" "that" "the" "system"
+    "uses" "internally" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "The" "reason" "is" "probably" "that" "these" "systems"
+    "are" "written" "in" "static" "languages," "and" "so"
+    "can" "not" "be" "easily" "customized" "to" "process" "a"
+    "document" "in" "a" "way" "different" "from" "what"
+    "the" "initial" "author" "of" "the" "system" "intended" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "The" "purpose" "of" "this" "project" "is" "to" "create"
+    "a" "library" "that" "defines" "a" "set" "of" "classes"
+    "and" "generic" "functions" "that" "allow" "some" "client"
+    "code" "to" "create" "and" "manipulate" "a" "document" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Contrary" "to" "the" "types" "of" "systems"
+    "cited" "above" "," 
+    "the" "specification" "of" "this" "system" "is" "thus" "in"
+    "terms" "of" "what" "kind" "of" "objects" "it" "manipulates" ","
+    "and" "what" "functions" "exist" "to" "manipulate" "them" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "A" "library" "like" "this" "can" "then" "be" "used"
+    "both" "by" "an" "application" "that" "reads" "some"
+    "markup" "syntax" "and" "produces" "the" "document"
+    "in" "the" "form" "of" "a" "graph" "of" "class" "instances"
+    "," "and" "by" "an" "interactive" "application" "that"
+    "allows" "the" "user" "to" "create" "the" "document" "by"
+    "issuing" "gestures" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "In" "fact" "," "it" "will" "be" "possible" "to" "create"
+    "several" "different" "application" "with" "different"
+    "markups" "and" "with" "a" "different" "set" "of"
+    "possible" "gestures" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "In" "order" "to" "save" "documents" "across" "sessions" "in"
+    "a" "UNIX-like" "operating" "system" "," "we" "propose" "an"
+    "external" "file" "format" "specified" "as" "a" "sequence"
+    "of" "bytes" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "This" "external" "format" "is" "a" "trivial" "mapping"
+    "from" "the" "internal" "structure" "," "and" "a" "similar"
+    "internal" "structure" "can" "be" "created" "by" "using"
+    "the" "Common Lisp" "function" "READ" "to" "read" "the"
+    "contents" "of" "a" "file" "in" "this" "format" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  ([doclang:sentence
+   :children
+   (
+    "Doclang" "is" "thus" "a" "system" "for" "structuring" "documents"
+    "," "and" "inparticular" "software" "documentation" "."
+    )]
+   [doclang:sentence
+   :children
+   (
+    "Here" "is" "what" "Doclang" "is"
+    [doclang:emphasize
+    :children ("not")]
+    ":"
+    )]
+   )]
+  [doclang:itemize
+  :children
+  (
+   [doclang:paragraph
+   :children
+   (
+    [doclang:sentence
+    :children
+    (
+     "It" "is" "not" "a" "system" "for"
+     [doclang:emphasize
+     :children
+     (
+      "extracting" "document" "strings"
+      )]
+     "from" "Common" "Lisp" "source" "code"
+     "and" "turn" "it" "into" "HTML" "or" "some" "other"
+     "format" "."
+     )]
+    )]
+   [doclang:paragraph
+   :children
+   (
+    [doclang:sentence
+    :children
+    (
+     "It" "is" "also" "not" "another" "system" "defined"
+     "in" "terms" "of" "the"
+     [doclang:emphasize
+     :children
+     (
+      "input" "syntax"
+      )]
+     "that" "it" "accepts" "," "as" "is" "the" "case" "for"
+     "existing" "markup systems" "."
+     )]
+    )]
+   [doclang:paragraph
+   :children
+   (
+    "Finally, it is not an interactive system defined in terms of the"
+    [doclang:emphasize
+    :children
+    (
+     "gestures"
+     )]
+    "that the user is allowed to emit" "."
+    )]
+   )]
+  [doclang:paragraph
+  :children
+  (
+   [doclang:sentence
+   :children
+   (
+    "Instead" "," "it" "is" "a" "system" "that" "is" "defined"
+    "in" "terms" "of" "a" "set" "of" "CLOS"
+    [doclang:emphasize
+    :children
+    (
+     "protocols"
+     )]
+    "defined" "on" "a" "data" "structure" "kept" "in"
+    "main" "memory" "."
+    )]
+   )]
+  )]
+ [doclang:section
+ :title
+ [doclang:sentence
+ :children
+ ("Purpose")]
+ :children
+ (
+  [doclang:paragraph
+  :children
+  (
+   [doclang:sentence
+   :children
+   (
+    "The" "purpose" "of" "Doclang" "is" "to" "become" "a"
+    "new" "documentation" "and" "typesetting" "system" "."
+    )]
+   )]
+  )]
+ )]
