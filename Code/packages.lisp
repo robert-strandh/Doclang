@@ -5,14 +5,18 @@
   (:export
    #:chunk #:unique-id
    #:word-component-chunk #:characters
+   #:compound-object
    #:compound-chunk #:children
-   #:word-chunk
-   #:phrase-chunk
-   #:sentence-chunk
-   #:paragraph-chunk
-   #:indirect-chunk
-   #:inline-chunk
-   #:reference-chunk
+   #:phrase
+   #:terminator
+   #:sentence
+   #:paragraph
+   #:itemize
+   #:section
+   #:title
+   #:author
+   #:document
+   #:emphasize
    #:read-model
    #:write-model))
 
