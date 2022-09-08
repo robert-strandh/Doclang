@@ -13,7 +13,7 @@ V1
  [doclang:sentence
  :children
  ("Requirements" "specification")])]
-:children 
+:children
 ([doclang:section
  :title
  [doclang:sentence
@@ -89,7 +89,7 @@ V1
    [doclang:sentence
    :children
    (
-    "Both" "types" "of" "system" "generate" "output" "in" "some" 
+    "Both" "types" "of" "system" "generate" "output" "in" "some"
     "form" "that" "the" "user" "can" "view" "using" "standard" "tools"
     ","
     "such" "as" "PDF" "or" "HTML" "."
@@ -158,7 +158,7 @@ V1
    :children
    (
     "Contrary" "to" "the" "types" "of" "systems"
-    "cited" "above" "," 
+    "cited" "above" ","
     "the" "specification" "of" "this" "system" "is" "thus" "in"
     "terms" "of" "what" "kind" "of" "objects" "it" "manipulates" ","
     "and" "what" "functions" "exist" "to" "manipulate" "them" "."
@@ -260,14 +260,18 @@ V1
    [doclang:paragraph
    :children
    (
-    "Finally" "," "it" "is" "not" "an" "interactive" "system"
-    "defined" "in" "terms" "of" "the"
-    [doclang:emphasize
+    [doclang:sentence
     :children
     (
-     "gestures"
+     "Finally" "," "it" "is" "not" "an" "interactive" "system"
+     "defined" "in" "terms" "of" "the"
+     [doclang:emphasize
+     :children
+     (
+      "gestures"
+      )]
+     "that" "the" "user" "is" "allowed" "to" "emit" "."
      )]
-    "that" "the" "user" "is" "allowed" "to" "emit" "."
     )]
    )]
   [doclang:paragraph
