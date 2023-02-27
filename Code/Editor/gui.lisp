@@ -15,8 +15,8 @@
   (declare (ignore frame))
   (format info-pane
           " ~a (~a)"
-          (esa-utils:name (esa:current-buffer))
-          "some stuff"))
+          "buffer"
+          "stuff"))
 
 (defparameter *minibuffer-pane-text-style*
   (clim:make-text-style :fix :roman 14))
@@ -71,3 +71,18 @@
               window
               minibuffer)))
   (:top-level (esa:esa-top-level)))
+
+(defun editor (&key new-process (process-name "Doclang editor"))
+  (with-open-file (stream
+                   (uiop:xdg-config-home "doclang-editor" "init.lisp")
+                   :if-does-not-exist nil)
+    (unless (null stream)
+      (load stream)))
+  (let ((frame (clim:make-application-frame 'editor)))
+    (flet ((run () (clim:run-frame-top-level frame)))
+      (if new-process
+          (clim-sys:make-process #'run :name process-name)
+          (run)))))
+
+(defmethod esa:find-applicable-command-table ((frame editor))
+  (clim:find-command-table 'editor))
