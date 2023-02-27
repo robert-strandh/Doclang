@@ -86,3 +86,6 @@
 
 (defmethod esa:find-applicable-command-table ((frame editor))
   (clim:find-command-table 'editor))
+
+(defmethod clim:frame-standard-input ((frame editor))
+  (clim:find-pane-named frame 'minibuffer))
