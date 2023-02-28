@@ -7,4 +7,5 @@
   :components
   ((:file "packages")
    (:file "gui")
-   (:file "commands")))
+   (:file "commands")
+   (:file "output-records")))
